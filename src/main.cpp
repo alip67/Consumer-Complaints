@@ -10,7 +10,7 @@ static constexpr unsigned int PRODUCT_COLUMN = 1;
 
 int main(int argc, char** argv)
 {
-    if (argc > 3)
+    if (argc != 3)
     {
         std::cout << "usage : application <input_file_location> <output_file_location>" << argc << std::endl;
         return -1;
@@ -19,6 +19,20 @@ int main(int argc, char** argv)
     // read the input file
     std::ifstream input_file;
     input_file.open(argv[1], std::ios::in);
+
+    if(!input_file.is_open())
+    {
+        std::cout << "Invalid input file" << std::endl;
+        return -1;
+    }
+
+    std::ofstream output_file;
+    output_file.open(argv[2], std::ios::out | std::ofstream::trunc);
+    if(!output_file.is_open())
+    {
+        std::cout << "Invalid output file" << std::endl;
+        return -1;
+    }
 
     // temp string for saving a line when reading from file
     std::string line;
@@ -41,6 +55,7 @@ int main(int argc, char** argv)
 
     unsigned int csv_row_index = 0;
     char current_character = 0;
+
     while(!input_file.eof())
     { 
         std::vector<std::string> row_data(columns, std::string());
@@ -100,8 +115,6 @@ int main(int argc, char** argv)
         csv_data.push_back(row_data);
     }
 
-    std::ofstream output_file;
-    output_file.open(argv[2], std::ios::out | std::ofstream::trunc);
     output_file << "Date,Complaint,total,companies,highest company percentage\n";
 
     // You can remove std::cout so the app doesnt print the data to console
