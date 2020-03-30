@@ -4,7 +4,7 @@
 
 chmod 755 run.sh
 cd src/
-make
-time ./application ../input/complaints.csv ../output/generated_report.csv
+
+time ./application ../insight_testsuit/test_1/input/complaints.csv ../insight_testsuit/test_1/output/generated_report.csv
 cd ..
 
