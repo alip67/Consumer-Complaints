@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
         // second mapping is for complaints per company in that specific complaint
         if (row_data[ROW_YEAR] != "") {
             report_data_exp
-            [row_data[ROW_PRODUCT]+ "," +std::string(row_data[ROW_YEAR], 0, YEAR_CHARACTERS)]
+            [row_data[ROW_PRODUCT] +std::string(row_data[ROW_YEAR], 0, YEAR_CHARACTERS)]
             [row_data[ROW_COMPANY]]++;
         }
         //csv_data.push_back(row_data);
