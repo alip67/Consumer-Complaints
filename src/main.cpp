@@ -2,6 +2,7 @@
 #include <vector>
 #include <unordered_map>
 #include <fstream>
+#include <cmath>
 
 static constexpr unsigned int YEAR_CHARACTERS = 4;
 static constexpr unsigned int ROW_YEAR = 0;
@@ -113,12 +114,12 @@ int main(int argc, char **argv) {
         }
         std::cout << "total: " << total
                   << " - number of companies: " << iterator.second.size()
-                  << " max percentage: " << std::round((float) max_per_company / total * 100.0f)
+                  << " max percentage: " << round((float) max_per_company / total * 100.0f)
                   << "\n\n";
 
         output_file << total << ","
                     << iterator.second.size() << ","
-                    << std::round((float) max_per_company / total * 100.0f)
+                    << round((float) max_per_company / total * 100.0f)
                     << '\n';
     }
     input_file.close();
