@@ -94,13 +94,13 @@ int main(int argc, char **argv) {
         // second mapping is for complaints per company in that specific complaint
         if (row_data[ROW_YEAR] != "") {
             report_data_exp
-            [row_data[ROW_PRODUCT] +std::string(row_data[ROW_YEAR], 0, YEAR_CHARACTERS)]
+            [row_data[ROW_PRODUCT]+ "," +std::string(row_data[ROW_YEAR], 0, YEAR_CHARACTERS)]
             [row_data[ROW_COMPANY]]++;
         }
         //csv_data.push_back(row_data);
     }
 
-    output_file << "Complaint,Date,total,companies,highest company percentage\n";
+//    output_file << "Complaint,Date,total,companies,highest company percentage\n";
 
     // You can remove std::cout so the app doesnt print the data to console
     // for( const auto& n : u ) 
@@ -114,12 +114,12 @@ int main(int argc, char **argv) {
         }
         std::cout << "total: " << total
                   << " - number of companies: " << iterator.second.size()
-                  << " max percentage: " << std::round( (float) max_per_company / total * 100.0f )
+                  << " max percentage: " << (float) max_per_company / total * 100.0f
                   << "\n\n";
 
         output_file << total << ","
                     << iterator.second.size() << ","
-                    << std::round((float) max_per_company / total * 100.0f)
+                    << (float) max_per_company / total * 100.0f
                     << '\n';
     }
     input_file.close();
