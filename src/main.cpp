@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
         }
         std::cout << "total: " << total
                   << " - number of companies: " << iterator.second.size()
-                  << " max percentage: " << std::out((float) max_per_company / total * 100.0f)
+                  << " max percentage: " << std::round((float) max_per_company / total * 100.0f)
                   << "\n\n";
 
         output_file << total << ","
